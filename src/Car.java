@@ -80,5 +80,5 @@ public class Car {
     public boolean getUsedStatus() {
         return usedStatus;
     }
-    
+
 }
