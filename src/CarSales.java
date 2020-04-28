@@ -25,11 +25,10 @@ public class CarSales {
 
             switch (choice){
                 case 1:
+
                     System.out.println("Enter car ID  ");
                     int id=scan.nextInt();
                     idVec.add(index,id);
-
-
 
                     int year=0;
                     while(true) {
@@ -45,59 +44,73 @@ public class CarSales {
                     }
                     yearVec.add(index,year);
 
+                    System.out.println("enter cars model  ");
+                    String model= scan.next();
+                    modelVec.add( index,model );
+
+
                     System.out.println("Enter car price  ");
                     float price=scan.nextFloat();
                     priceVec.add( index,price );
 
+
+                    System.out.println("enter car vendor ");
+                    String vendor= scan.next();
+                    vendorVec.add(index,vendor);
+
                     System.out.println("how many car parts does this car have max is 3  ");
                     int numOfParts=scan.nextInt();
                     if(numOfParts>0){// making three possible part objects to be able to add them to the vector
+                        loop:
                         for(int i=1;i<=numOfParts;i++){
                             if(numOfParts==1){
                                 Part numOne= new Part();// part number one
+                                System.out.println("part number "+i);
+
                                 System.out.println("Enter part ID");
                                 numOne.setID( scan.nextInt() );
 
+                                System.out.println("Enter model ");
+                                numOne.setModel(scan.next() );
+
                                 partsVec.add(indexPart,numOne);
-                                numOfParts++;
-                                continue;
+                                indexPart++;
+                                continue loop;
 
                             }else if(numOfParts==2){// part number two
+                                System.out.println("part number "+i);
                                 Part numTwo= new Part();
+
                                 System.out.println("Enter part ID");
                                 numTwo.setID( scan.nextInt() );
 
-                                System.out.println("Enter part model");
-                                numTwo.setModel( scan.nextLine() );
+                                System.out.println("enter part model  ");
+                                numTwo.setModel( scan.next() );
 
-                                System.out.println("Enter part vendor");
-                                numTwo.setVendor( scan.nextLine() );
+                                System.out.println("enter part vendor ");
+                                numTwo.setVendor( scan.next() );
+
                                 partsVec.add(indexPart,numTwo);
-                                numOfParts++;
-                                continue;
+                                indexPart++;
+                                continue loop;
 
                             }else if(numOfParts==3){// part number 3
+                                System.out.println("part number "+i);
                                 Part numThree= new Part();
+
                                 System.out.println("Enter part ID");
                                 numThree.setID( scan.nextInt() );
 
-                                System.out.println("Enter part model");
-                                numThree.setModel( scan.nextLine() );
+                                System.out.println("enter part model ");
+                                numThree.setModel( scan.next() );
 
-                                System.out.println("Enter part vendor");
-                                numThree.setVendor( scan.nextLine() );
+                                System.out.println("enter part vendor ");
+                                numThree.setVendor(scan.next());
+
                                 partsVec.add(indexPart ,numThree);
-                                numOfParts++;
-                                continue;
+                                indexPart++;
+                                continue loop;
                             }
-                        }
-
-                        System.out.println("is the car new ? ");
-                        String use= scan.next();
-                        if(use.equalsIgnoreCase( "yes" )){
-                            usageVec.add(index,false );
-                        }else{
-                            usageVec.add( true );
                         }
 
                     }else{
@@ -105,7 +118,15 @@ public class CarSales {
                         partsVec.add(index,none);
                     }
 
-                    index++;// after all car parts have been added inciment counter
+                    System.out.println("is the car new ? ");
+                    String use= scan.next();
+                    if(use.equalsIgnoreCase( "yes" )){
+                        usageVec.add(index,false );
+                    }else{
+                        usageVec.add( true );
+                    }
+
+                    index++;// after all car parts have been added increment  counter
                     continue;
 
                 case 2:
@@ -115,6 +136,9 @@ public class CarSales {
                 case 3:
                     numOfTermination=3;
                     System.out.println("Program terminated ");
+                    continue;
+                default:
+                    System.out.println("invalid option ");
                     continue;
             }
         }
