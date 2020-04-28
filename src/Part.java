@@ -12,5 +12,28 @@ public class Part {
     public Part(){
         this(0,"null","null");
     }
-    
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getVendor() {
+        return vendor;
+    }
 }
