@@ -107,6 +107,7 @@ public class CarSales {
                                 System.out.println("enter part vendor ");
                                 numThree.setVendor(scan.next());
 
+
                                 partsVec.add(indexPart ,numThree);
                                 indexPart++;
                                 continue loop;
@@ -130,6 +131,12 @@ public class CarSales {
                     continue;
 
                 case 2:
+
+                    for(int i=0;i<indexPart;i++ ){
+                        System.out.println(partsVec.elementAt( i ).getID());
+                        System.out.println(partsVec.elementAt( i ).getModel());
+                        System.out.println(partsVec.elementAt( i ).getVendor());
+                    }
 
                     continue;
 
