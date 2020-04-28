@@ -12,7 +12,7 @@ public class Part {
     public Part(){
         this(0,"null","null");
     }
-
+    // setter methods
     public void setID(int ID) {
         this.ID = ID;
     }
@@ -25,6 +25,7 @@ public class Part {
         this.vendor = vendor;
     }
 
+    // getter methods
     public int getID() {
         return ID;
     }

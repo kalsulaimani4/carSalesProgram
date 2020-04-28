@@ -20,7 +20,7 @@ public class Car {
     public Car(){
         this(0,"null",2000,0,null,false);
     }
-
+    // setter methods
     public void setID(int ID) {
         this.ID = ID;
     }
@@ -53,6 +53,7 @@ public class Car {
         }
     }
 
+    // getter methods
     public int getID() {
         return ID;
     }
