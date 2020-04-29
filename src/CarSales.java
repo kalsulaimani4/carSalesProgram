@@ -58,7 +58,7 @@ public class CarSales {
                         loop:
                         for(int i=1;i<=numOfParts;i++){
                             if(numOfParts==1){
-                                Part numOne= new Part();// part number one
+                                Part numOne= new Part();
                                 System.out.println("part number "+i);
 
                                 System.out.println("Enter part ID");
@@ -67,6 +67,9 @@ public class CarSales {
                                 System.out.println("Enter model ");
                                 numOne.setPartModel(scan.next() );
 
+                                System.out.println("Enter part vendor ");
+                                numOne.setPartVendor( scan.next() );
+
                                 partsVec.add(indexPart,numOne);
                                 indexPart++;
                                 continue loop;
@@ -74,7 +77,6 @@ public class CarSales {
                             }else if(numOfParts==2){// part number two
                                 System.out.println("part number "+i);
                                 Part numTwo= new Part();
-
                                 System.out.println("Enter part ID");
                                 numTwo.setPartID( scan.nextInt() );
 
@@ -91,7 +93,6 @@ public class CarSales {
                             }else if(numOfParts==3){// part number 3
                                 System.out.println("part number "+i);
                                 Part numThree= new Part();
-
                                 System.out.println("Enter part ID");
                                 numThree.setPartID( scan.nextInt() );
 
@@ -115,29 +116,44 @@ public class CarSales {
 
                     cars.setParts(partsVec);
 
-                    System.out.println("is the car new ? ");
-                    String use= scan.next();
-                    cars.setVendor(use);
+                    while(true) {
+                        System.out.println( "is the car new ? " );
+                        String use = scan.next();
+                        try {
+                            cars.setUsedStatus( use );
+                        } catch (Exception e) {
+                            System.out.println( e.getMessage() );
+                            continue;
+                        }
+
+                        break;
+                    }
 
                     carVec.add(cars);
                     index++;// after all car parts have been added increment  counter
                     continue;
 
                 case 2:
+                    for(int i=0;i<carVec.size();i++ ) {// printing all  cars information
+                        System.out.println( "Car ID: "+carVec.elementAt( i ).getID() );
+                        System.out.println( "Car model: "+carVec.elementAt( i ).getModel() );
+                        System.out.println( "Car model year: "+carVec.elementAt( i ).getManufacturingYear() );
+                        System.out.println( "Car Price: "+carVec.elementAt( i ).getPrice() +"$");
+                        System.out.println( "car parts: " );
+                        carVec.elementAt( i ).getParts( numberOfParts.elementAt( i ) );// method prints all the part information taking the number of parts from the vector
+                        System.out.println("is the car used ? ");
+                        System.out.println(carVec.elementAt( i ).getUsedStatus());
 
-                    for(int i=0;i<carVec.size();i++ ){
-
-                        carVec.elementAt( i ).getParts(numberOfParts.elementAt( i ));
                     }
 
                     continue;
 
                 case 3:
-                    numOfTermination=3;
+                    numOfTermination=3;// changing number to end while loop and print the message program termnated
                     System.out.println("Program terminated ");
                     continue;
                 default:
-                    System.out.println("invalid option ");
+                    System.out.println("invalid option ");// if user enters a number other then the three options
                     continue;
             }
         }

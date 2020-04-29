@@ -1,5 +1,6 @@
 import com.sun.org.glassfish.external.statistics.StringStatistic;
 
+import java.security.InvalidParameterException;
 import java.util.Vector;
 
 public class Car {
@@ -45,11 +46,13 @@ public class Car {
         this.vendor = vendor;
     }
 
-    public void setUsedStatus(String use ) {
+    public void setUsedStatus(String use ) throws InvalidParameterException {
         if(use.equalsIgnoreCase( "yes" )){
             usedStatus=true;
-        }if(use.equalsIgnoreCase( "no" )){
+        }else if (use.equalsIgnoreCase( "no" )){
             usedStatus=false;
+        }else{
+            throw new InvalidParameterException("invalid answer ");
         }
     }
 
@@ -71,10 +74,14 @@ public class Car {
     }
 
     public void  getParts(int amount) {
-        for(int i=1;i<=amount;i++){
-            System.out.println("part number "+i+" ID :"+parts.elementAt( i ).getPartID());
-            System.out.println(parts.elementAt( i ).getPartModel());
-            System.out.println(parts.elementAt( i ).getPartVendor());
+        if(amount>0){
+        for(int i=0;i<amount;i++) {
+            System.out.println( "Part ID :" + parts.elementAt( i ).getPartID() );
+            System.out.println( "Part Model :" + parts.elementAt( i ).getPartModel() );
+            System.out.println( "Part vendor : " + parts.elementAt( i ).getPartVendor() );
+        }
+        }else{
+            System.out.println("no parts ");
         }
     }
 
