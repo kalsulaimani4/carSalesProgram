@@ -48,9 +48,9 @@ public class Car {
 
     public void setUsedStatus(String use ) throws InvalidParameterException {
         if(use.equalsIgnoreCase( "yes" )){
-            usedStatus=true;
-        }else if (use.equalsIgnoreCase( "no" )){
             usedStatus=false;
+        }else if (use.equalsIgnoreCase( "no" )){
+            usedStatus=true;
         }else{
             throw new InvalidParameterException("invalid answer ");
         }
