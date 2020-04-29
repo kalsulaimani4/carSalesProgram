@@ -6,14 +6,10 @@ public class CarSales {
     public static void main(String[] args){
         // added all the needed vectors to save the inputted information in
         Scanner scan = new Scanner(System.in);
-        Vector<Integer> idVec= new Vector<>(50);
-        Vector<String> modelVec= new Vector<>(50);
-        Vector<String> vendorVec= new Vector<>(50);
-        Vector<Integer> yearVec= new Vector<>(50);
-        Vector<Float> priceVec= new Vector<>(50);
-        Vector<Part> partsVec= new Vector<>(50);
-        Vector<Boolean> usageVec= new Vector<>(50);
 
+        Vector<Part> partsVec= new Vector<>(50);// vector to hold all part objects
+        Vector<Car> carVec= new Vector<>(50);// vector to hold all car objects
+        Vector<Integer> numberOfParts= new Vector<>(50);// will store how many parts eatch car has
 
         int numOfTermination=0;// number will be set to 3 if user choses to end the program
         int index=0;// will increase when a new cars info is added
@@ -24,11 +20,11 @@ public class CarSales {
             int choice=scan.nextInt();
 
             switch (choice){
-                case 1:
 
+                case 1:
+                    Car cars = new Car();
                     System.out.println("Enter car ID  ");
-                    int id=scan.nextInt();
-                    idVec.add(index,id);
+                    cars.setID(scan.nextInt());
 
                     int year=0;
                     while(true) {
@@ -42,24 +38,22 @@ public class CarSales {
                         }
                         break;
                     }
-                    yearVec.add(index,year);
+                    cars.setManufacturingYear( year );
 
                     System.out.println("enter cars model  ");
-                    String model= scan.next();
-                    modelVec.add( index,model );
+                    cars.setModel( scan.next() );
 
 
                     System.out.println("Enter car price  ");
-                    float price=scan.nextFloat();
-                    priceVec.add( index,price );
+                    cars.setPrice( scan.nextFloat() );
 
 
                     System.out.println("enter car vendor ");
-                    String vendor= scan.next();
-                    vendorVec.add(index,vendor);
+                    cars.setVendor( scan.next() );
 
                     System.out.println("how many car parts does this car have max is 3  ");
                     int numOfParts=scan.nextInt();
+                    numberOfParts.add( index,numOfParts );
                     if(numOfParts>0){// making three possible part objects to be able to add them to the vector
                         loop:
                         for(int i=1;i<=numOfParts;i++){
@@ -68,10 +62,10 @@ public class CarSales {
                                 System.out.println("part number "+i);
 
                                 System.out.println("Enter part ID");
-                                numOne.setID( scan.nextInt() );
+                                numOne.setPartID( scan.nextInt() );
 
                                 System.out.println("Enter model ");
-                                numOne.setModel(scan.next() );
+                                numOne.setPartModel(scan.next() );
 
                                 partsVec.add(indexPart,numOne);
                                 indexPart++;
@@ -82,13 +76,13 @@ public class CarSales {
                                 Part numTwo= new Part();
 
                                 System.out.println("Enter part ID");
-                                numTwo.setID( scan.nextInt() );
+                                numTwo.setPartID( scan.nextInt() );
 
                                 System.out.println("enter part model  ");
-                                numTwo.setModel( scan.next() );
+                                numTwo.setPartModel( scan.next() );
 
                                 System.out.println("enter part vendor ");
-                                numTwo.setVendor( scan.next() );
+                                numTwo.setPartVendor( scan.next() );
 
                                 partsVec.add(indexPart,numTwo);
                                 indexPart++;
@@ -99,13 +93,13 @@ public class CarSales {
                                 Part numThree= new Part();
 
                                 System.out.println("Enter part ID");
-                                numThree.setID( scan.nextInt() );
+                                numThree.setPartID( scan.nextInt() );
 
                                 System.out.println("enter part model ");
-                                numThree.setModel( scan.next() );
+                                numThree.setPartModel( scan.next() );
 
                                 System.out.println("enter part vendor ");
-                                numThree.setVendor(scan.next());
+                                numThree.setPartVendor(scan.next());
 
 
                                 partsVec.add(indexPart ,numThree);
@@ -119,23 +113,21 @@ public class CarSales {
                         partsVec.add(index,none);
                     }
 
+                    cars.setParts(partsVec);
+
                     System.out.println("is the car new ? ");
                     String use= scan.next();
-                    if(use.equalsIgnoreCase( "yes" )){
-                        usageVec.add(index,false );
-                    }else{
-                        usageVec.add( true );
-                    }
+                    cars.setVendor(use);
 
+                    carVec.add(cars);
                     index++;// after all car parts have been added increment  counter
                     continue;
 
                 case 2:
 
-                    for(int i=0;i<indexPart;i++ ){
-                        System.out.println(partsVec.elementAt( i ).getID());
-                        System.out.println(partsVec.elementAt( i ).getModel());
-                        System.out.println(partsVec.elementAt( i ).getVendor());
+                    for(int i=0;i<carVec.size();i++ ){
+
+                        carVec.elementAt( i ).getParts(numberOfParts.elementAt( i ));
                     }
 
                     continue;

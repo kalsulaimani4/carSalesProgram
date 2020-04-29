@@ -13,28 +13,28 @@ public class Part {
         this(0,"null","null");
     }
     // setter methods
-    public void setID(int ID) {
+    public void setPartID(int ID) {
         this.ID = ID;
     }
 
-    public void setModel(String model) {
+    public void setPartModel(String model) {
         this.model = model;
     }
 
-    public void setVendor(String vendor) {
+    public void setPartVendor(String vendor) {
         this.vendor = vendor;
     }
 
     // getter methods
-    public int getID() {
+    public int getPartID() {
         return ID;
     }
 
-    public String getModel() {
+    public String getPartModel() {
         return model;
     }
 
-    public String getVendor() {
+    public String getPartVendor() {
         return vendor;
     }
 }

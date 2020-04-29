@@ -70,8 +70,12 @@ public class Car {
         return price;
     }
 
-    public Vector<Part> getParts() {
-        return parts;
+    public void  getParts(int amount) {
+        for(int i=1;i<=amount;i++){
+            System.out.println("part number "+i+" ID :"+parts.elementAt( i ).getPartID());
+            System.out.println(parts.elementAt( i ).getPartModel());
+            System.out.println(parts.elementAt( i ).getPartVendor());
+        }
     }
 
     public String getVendor() {
